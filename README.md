@@ -1,1 +1,1 @@
-# bioinformatics_homeworks
+# Bioinformatics homeworks
