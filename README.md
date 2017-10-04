@@ -1,5 +1,5 @@
 # Tikhonova Polina
 ## Bioinformatics homeworks
 
-* [System biology and personalized medicine](https://PollyTikhonova.github.io/bioinformatics_homeworks/Pesonalized_medicine/README.md)
-* [Structural bioinformatics and medicine modelling](https://PollyTikhonova.github.io/bioinformatics_homeworks/Pesonalized_medicine/README.md)
+* [System biology and personalized medicine](https://github.com/PollyTikhonova/bioinformatics_homeworks/tree/master/Medicine_modelling/Pesonalized_medicine)
+* [Structural bioinformatics and medicine modelling](https://github.com/PollyTikhonova/bioinformatics_homeworks/tree/master/Medicine_modelling)
