@@ -1,2 +1,2 @@
 # Tikhonova Polina
-Bioinformatics homeworks
+## Bioinformatics homeworks
