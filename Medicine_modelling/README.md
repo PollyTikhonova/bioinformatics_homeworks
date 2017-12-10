@@ -5,3 +5,5 @@
 * [Task 3](https://PollyTikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_3)
 * [Task 4](https://PollyTikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_4)
 * [Task 5](https://PollyTikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_5)
+* [Task 6](https://PollyTikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_6)
+* [Task 7](https://PollyTikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_7)
