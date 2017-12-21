@@ -1,0 +1,106 @@
+
+<!-- saved from url=(0082)https://shadbox.vsb.fbb.msu.ru/user/shad/files/hse/tikhonova/hw9/trajectories.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+<script src="./jquery.min.js(1).Без названия"></script> 
+<link rel="stylesheet" href="./jquery-ui.css">
+<script src="./jquery-ui.js.Без названия"></script>
+<script src="./ngl.js.Без названия"></script>
+
+<style>
+</style>
+
+<script>
+document.addEventListener( "DOMContentLoaded", function(){
+    
+    var stage = new NGL.Stage("viewport")
+    stage.setParameters({'backgroundColor': 'white'})
+
+    stage.loadFile( "https://pollytikhonova.github.io/bioinformatics_homeworks/Medicine_modelling/task_9/files/b_pbc_2.pdb", { 
+         defaultRepresentation: true, 
+        asTrajectory: true}).then(function(o){
+    //stage.loadFile(
+    //"https://raw.githubusercontent.com/hainm/notebook-nglview/master/membrane/sim.pdb",{defaultRepresentation:
+    //   true, asTrajectory: true}).then(function(o){
+
+        $('#please_wait').hide();
+        var component = stage.compList[0];
+        component.addRepresentation("cartoon", {'sele': 'protein'});
+        component.addRepresentation("licorice", {'sele': 'not hydrogen and not protein'});
+
+        stage.viewer.container.addEventListener( "dblclick", function(){
+            stage.toggleFullscreen();
+        } );
+        
+        var container = stage.viewer.container;
+        var $container = $(container);
+        var frame = 0;
+        var timeout = 100;
+        var playerInterval;
+        var traj = stage.compList[0].trajList[0].trajectory;
+        var count = traj.numframes;
+
+        var pause = function(){
+            $playerButton.text( "play" );
+            if( playerInterval !== undefined ){
+                clearInterval( playerInterval );
+            }
+        }
+        
+        var play = function(){
+            $playerButton.text( "pause" );
+            playerInterval = setInterval(function(){
+                frame = frame + 1;
+                    
+                if (frame > count - 1){
+                    frame = 0;
+                }
+                    
+                $playerSlider.slider("option", "value", frame);
+                traj.setFrame(frame);
+            }, timeout)
+        }
+        
+        var $playerButton = $( "<button>play</button>" )
+            .css( "float", "left" )
+            .css( "width", "55px" )
+            .css( "opacity", "0.7" )
+            .click( function( event ){
+                if($playerButton.text() === "play" ){
+                    play();
+                }else if($playerButton.text() === "pause" ){
+                    pause();
+                }
+            })
+        
+        var $playerSlider = $( "<div></div>" )
+            .css( "margin-left", "70px" )
+            .css( "position", "relative" )
+            .css( "bottom", "-4px" )
+            .slider({
+                value: 0,
+                min: 0,
+                max: count-1,
+                slide: function(event, ui){
+                    pause();
+                    traj.setFrame(ui.value);
+                    frame = ui.value;
+                },
+             })
+        
+        var $player = $( "<div></div>" )
+            .css( "position", "relative" )
+            .css( "bottom", "5%" )
+            .css( "width", "94%" )
+            .css( "margin-left", "3%" )
+            .css( "opacity", "0.7" )
+            .append( $playerButton )
+            .append( $playerSlider )
+            .appendTo( $container );
+
+});
+});
+
+</script>
+    <div id="viewport" style="width:80%; height:90%;margin:auto"><canvas width="848" height="738" style="width: 707.201px; height: 615.599px; background-color: rgb(255, 255, 255);"></canvas><div style="position: relative; bottom: 5%; width: 94%; margin-left: 3%; opacity: 0.7;"><button style="float: left; width: 55px; opacity: 0.7;">play</button><div class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" style="margin-left: 70px; position: relative; bottom: -4px;"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span></div></div></div>
+
+</body></html>
